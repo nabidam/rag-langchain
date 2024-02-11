@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "rag-langchain"
+version = "0.1.0"
+description = ""
+authors = ["nabidam <navidabbaspoor@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain = "^0.1.6"
+langchain-community = "^0.0.19"
+langchain-openai = "^0.0.5"
+chromadb = "^0.4.22"
+langchainhub = "^0.1.14"
+langchain-core = "^0.1.22"
+requests = "^2.31.0"
+bs4 = "^0.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
