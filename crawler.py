@@ -71,6 +71,7 @@ with open(file_path, "rb") as file:
 
 vectorstore = Chroma(persist_directory="db", embedding_function=OpenAIEmbeddings())
 
+splits = []
 for idx, data in enumerate(raw_data):
     print(f"[INFO] idx: {idx}/{len(raw_data)} is going to be embedded and stored.")
 
@@ -78,9 +79,11 @@ for idx, data in enumerate(raw_data):
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
     all_splits = text_splitter.split_documents(data)
 
-    # store splits
-    vectorstore.add_documents(documents=all_splits)
+    splits += all_splits
+
     print(f"[INFO] idx: {idx}/{len(raw_data)} is processed")
-    time.sleep(3)
+    
+# store splits
+vectorstore.add_documents(documents=all_splits)
 
 vectorstore.persist()
